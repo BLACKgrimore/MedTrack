@@ -3,13 +3,14 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { PiGlobeHemisphereEastThin } from "react-icons/pi";
-import { BsBusFront } from "react-icons/bs";
-import { IoPricetagsOutline } from "react-icons/io5";
+import { IoMedicalOutline } from "react-icons/io5"; // Pharmaceutical icon
 import { IoSearch } from "react-icons/io5";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { IoPricetagsOutline } from "react-icons/io5";
 
-const serviceArray = [ "Dj", "Event Manager", "Car Rentals", "Banquet Hall", "Marriage Hall", "Restraunt", "Anchor", "Singer", "Dancer", "Decorator", "Game", "Photo Grapher", "Video Grapher", "Pandit", "Fashion Design", "Crockery", "Body Guard", "Jewellery", "Clothes Wedding", "Marriage", "Birthday", "Babyshower", "Fresher Party", "Fair Well", "Annual Function", "Ceremony",  "Anniversary", "Pooja", "Designer ", "Photography"]
+// Example pharmaceutical services, you can replace with actual ones.
+const serviceArray = ["Pharmacy", "Consultation", "Medicine Delivery", "Health Checkups", "Lab Tests", "Telemedicine", "Prescription Refills", "Wellness", "Chronic Care", "Emergency Care", "Medical Supplies", "Vaccinations", "Mental Health", "Health Advice"];
 
 const HeroSection = () => {
     const [carousel, setCarousel] = useState(0);
@@ -42,7 +43,7 @@ const HeroSection = () => {
                         id='carousel-image-1'
                         style={{ opacity: (carousel === 0 ? 1 : 0), zIndex: (carousel === 0 ? 1 : 0) }}
                         className='absolute h-full w-full object-cover transition-opacity duration-1000'
-                        src={"/herosec.png"}
+                        src={"/pharmacyHero1.png"} // Replace with pharmacy-related image
                         height={1000}
                         width={1000}
                         alt="Hero Section 1"
@@ -52,7 +53,7 @@ const HeroSection = () => {
                         id='carousel-image-2'
                         style={{ opacity: (carousel === 1 ? 1 : 0), zIndex: (carousel === 1 ? 1 : 0) }}
                         className='absolute h-full w-full object-cover transition-opacity duration-1000'
-                        src={"/herosec2.png"}
+                        src={"/pharmacyHero2.png"} // Replace with pharmacy-related image
                         height={1000}
                         width={1000}
                         alt="Hero Section 2"
@@ -62,7 +63,7 @@ const HeroSection = () => {
                         id='carousel-image-3'
                         style={{ opacity: (carousel === 2 ? 1 : 0), zIndex: (carousel === 2 ? 1 : 0) }}
                         className='absolute h-full w-full object-cover transition-opacity duration-1000'
-                        src={"/herosec3.png"}
+                        src={"/pharmacyHero3.png"} // Replace with pharmacy-related image
                         height={1000}
                         width={1000}
                         alt="Hero Section 3"
@@ -71,12 +72,11 @@ const HeroSection = () => {
 
                 <div className="text-white flex flex-col text-center justify-center content-center sm:h-[35rem]
                      xsm:h-[100vh] min-w-28 space-y-5 xsm:mt-4 md:p-0 sm:mt-8 md:mt-4">
-                    <p>Precision Planning, Flawless Execution</p>
+                    <p>Reliable Healthcare, Anytime, Anywhere</p>
 
-                    <h1 className="md:text-4xl sm:text-2xl md:p-0 text-center xsm:text-5xl font-semibold">Book Evego, Create Memories</h1>
+                    <h1 className="md:text-4xl sm:text-2xl md:p-0 text-center xsm:text-5xl font-semibold">Your Health, Our Priority</h1>
 
-                    <p className="md:max-w-[35rem] sm:max-w-[25rem] xsm:max-w-[15rem] text-sm self-center">Experience the magic of unforgettable events crafted within your budget by Evego Event.
-                        Let's start planning your unique celebration!"
+                    <p className="md:max-w-[35rem] sm:max-w-[25rem] xsm:max-w-[15rem] text-sm self-center">Access trusted pharmacy services, consultations, and medicine delivery — all at your convenience. Let us help you stay healthy!"
                     </p>
 
                     <form onSubmit={handleSubmit} className="bg-white w-fit md:gap-0 xsm:gap-2 text-black md:rounded-xl xsm:rounded-full md:p-3 xsm:p-1 text-sm self-center flex md:flex-row
@@ -96,7 +96,7 @@ const HeroSection = () => {
                         </div>
                         {/* search 2 */}
                         <div className="relative flex items-center focus-within:text-lightorange">
-                            <BsBusFront className="w-5 h-9 absolute md:ml-3 xsm:ml-1 pointer-events-none" />
+                            <IoMedicalOutline className="w-5 h-9 absolute md:ml-3 xsm:ml-1 pointer-events-none" />
                             <select
                                 type="text"
                                 name="serviceCategory"
@@ -115,7 +115,7 @@ const HeroSection = () => {
                         <div className="relative flex items-center focus-within:text-lightorange">
                             <IoPricetagsOutline className="w-5 h-9 absolute md:ml-3 xsm:ml-1 pointer-events-none" />
                             <input type="text"
-                                placeholder="Price"
+                                placeholder="Price Range"
                                 required
                                 ref={price}
                                 className="pr-3 md:pl-10 xsm:pl-7 md:max-w-[9rem] sm:max-w-[7rem] xsm:max-w-[5rem] px-3 py-2 border-[1px]
