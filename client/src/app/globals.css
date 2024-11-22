@@ -1,0 +1,712 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.toastBody {
+    font-family: "Atlas Grotesk Web", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+  }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE और Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+/* styles/globals.css */
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+
+
+
+/* Hide number input spinner for Chrome, Safari, Edge, and Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Hide number input spinner for Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+
+
+/* contactus.css */
+
+.bucket {
+    background-color: #E9D1EC;
+}
+
+.heading h1 {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 100px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #fff;
+}
+
+.form1 {
+    display: flex;
+    position: relative;
+    top: -140px;
+    margin-top: -100px;
+    flex-direction: column;
+    gap: 10px;
+    width: 600px;
+    margin: auto;
+    height: fit-content;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: #f2f2f2;
+    flex-wrap: nowrap;
+    padding: 20px;
+    z-index: 1;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2rem;
+}
+
+.form1 input,
+.form1 textarea,
+.form1 select {
+    width: 30rem;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 16px;
+    background-color: #F9EAEA
+}
+
+.form1 select {
+    margin-bottom: 20px;
+}
+
+.form1 textarea {
+    min-height: 80px;
+    resize: none;
+}
+
+.form1 button {
+    padding: 10px 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    border: none;
+    background-color: #f97316;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#contactInfo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 1rem;
+    gap: 2rem;
+    margin-top: 20px;
+}
+
+#contactInfo .email {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-size: 1rem;
+    margin: 0 10px;
+}
+
+#contactInfo.whatsapp {
+    height: 2rem;
+    width: 2rem;
+}
+
+.emailText p {
+    margin: 0;
+}
+
+.servicesh1 {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.servicesh2 {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.serheading {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #FCE6F2;
+}
+
+.r1c1 {
+    overflow: hidden;
+    background-color: #D8DFFC;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 600px;
+    gap:5rem
+}
+
+
+.r1c2 {
+    background-color: #F4D5C2;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    max-width: 600px;
+    gap:5rem
+}
+
+.r2c1 {
+    background-color: #CFCDB8;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    max-width: 600px;
+    gap:5rem
+}
+
+.r2c2 {
+    background-color: #F6B896;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    max-width: 600px;
+    gap:5rem
+}
+
+.sercards {
+    display: flex;
+    flex-direction: column;
+    background-color: #FCE6F2;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding-bottom: 80px;
+    flex-wrap: wrap;
+}
+
+.serrow1 {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.sercardtxt {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.sercardtxt2 {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.cardtxt {
+    padding: 17px;
+}
+
+.explore {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+button {
+    display: flex;
+}
+
+.rcticon {
+    padding-top: 4px;
+    margin-left: 0;
+}
+
+@media (max-width:790px) {
+    .sercardtxt {
+        font-size: 15px;
+    }
+    .sercardtxt2 {
+        font-size: 8px;
+    }
+    .cardph {
+        width: 150px;
+    }
+    .r1c1,
+    .r1c2,
+    .r2c1,
+    .r2c2 {
+        max-width: 400px;
+    }
+    .serrow1 {
+        align-items: center;
+        justify-content: center;
+    }
+    .serheading {
+        padding-bottom: 20px;
+    }
+}
+
+.sersec2txt h1 {
+    font-size: 48px;
+}
+
+.seemore {
+    border: 1px solid black;
+    width: fit-content;
+    border-radius: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sersec2 {
+    display: flex;
+    padding: 3%;
+}
+
+.sersec2txt {
+    font-weight: 600;
+}
+
+.sersec2txt2 h3 {
+    color: #878C91;
+    margin-top: 20px;
+}
+
+.seemore {
+    margin-top: 60px;
+}
+
+.sersec2main {
+    background-color: #FCE6F2;
+}
+
+.cardarrow {
+    border-radius: 70px;
+    border: 1px solid black;
+    padding: 16px 32px;
+}
+
+.sersec2card1 {
+    max-width: 410px;
+    background-color: white;
+    padding: 32px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.card1a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card1c {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.sersec2card {
+    padding: 4%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6%;
+    justify-content: center;
+}
+
+.greendot {
+    width: 14px;
+    height: 14px;
+    background-color: #45A7DE;
+    border-radius: 50%;
+}
+
+.reddot {
+    width: 14px;
+    height: 14px;
+    background-color: #EA5F38;
+    border-radius: 50%;
+}
+
+.purpledot {
+    width: 14px;
+    height: 14px;
+    background-color: #6A26F1;
+    border-radius: 50%;
+}
+
+@media (max-width:790px) {
+    .sersec2card {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .sersec2 {
+        flex-direction: column;
+    }
+    .sersec2txt h1 {
+        font-size: 2rem;
+    }
+    .seemore {
+        margin-top: 30px;
+    }
+    .sersec2txt2 h3 {
+        font-size: 13px;
+    }
+    .sersec2 {
+        padding: 6%;
+    }
+}
+
+
+/* ArardCeremony page*/
+
+.mainimgdiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50rem;
+    flex-wrap: wrap;
+}
+
+.mainimgtxt {
+    color: white;
+    font-weight: 700;
+    font-size: 64px;
+}
+
+
+/* .awardCcontainer {
+  padding-top: 100px;
+} */
+
+.playimgcon {
+    display: flex;
+    max-width: 1204px;
+    flex-wrap: wrap;
+}
+
+.playimgcenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.playimg,
+.playimgtxt {
+    flex-basis: 50%;
+}
+
+.playimgtxt {
+    background-color: #DB1721;
+    padding: 20px;
+}
+
+.playimgtxt h1 {
+    color: white;
+    font-weight: 500;
+    font-size: 50px;
+}
+
+.playimgtxt p {
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.playimg {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.playimgtxt button {
+    border: 2px solid white;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 30px;
+}
+
+
+/* 7 round img section */
+
+.redrimg1 {
+    width: 150px;
+    height: 150px;
+    border: 5px solid #DB1721;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.redrimg1txt p {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.redrcontainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 90px;
+    padding-bottom: 100px;
+    flex-wrap: wrap;
+}
+
+.redr7img {
+    height: 240px;
+}
+
+
+/* Vanue Categories */
+
+.vanuecontainer {
+    padding: 30px 150px;
+    background-color: #DB1721;
+}
+
+.vanuehead h1 {
+    font-size: 50px;
+    font-weight: 600px;
+}
+
+.vanuehead p {
+    font-size: 18px;
+    font-weight: 500px;
+    color: #3E4750;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.vanueimg img {
+    width: 282px;
+    height: 160px;
+    border-radius: 10px;
+}
+
+.vanueimgtxt h2 {
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+}
+
+.vanueimgtxt p {
+    font-weight: 400;
+    font-size: 11.5px;
+    color: #3F3F3F;
+}
+
+.valueimgcon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.widthf {
+    width: 400px;
+}
+
+.vanueimgsecwt {
+    width: 210px;
+}
+
+.valueimgconwt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 30px;
+    flex-wrap: wrap;
+}
+
+.vanueimg img {
+    border: 3px solid #DB1721;
+}
+
+@media (max-width:790px) {
+    .playimg img {
+        width: 100%;
+    }
+    .playimgcon img {
+        width: 100%;
+    }
+    .playimg,
+    .playimgtxt {
+        flex-basis: 100%;
+    }
+    .redrcontainer {
+        padding: 30px 20px;
+    }
+    .mainimgdiv {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .vanuecontainer {
+        padding: 10px;
+    }
+    .valueimgcon {
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
+/* .text{
+    font-size:48px; 
+    font-family: sans-serif;
+    font-weight: 600;
+    color:#010205;
+    height: 36px;
+    width: 522px;
+    margin-left:81px;
+    margin-top: 20px;
+
+  }
+  .para{
+    font-size: 20px;
+    display: block;
+    margin-top: 20px;
+    margin-left:3px;
+    padding: 100px;
+
+  } */
+
+
+/* Nomination Section */
+
+.nominatedsec {
+    background-color: #DB1721;
+    padding: 60px;
+}
+
+.nomicards {
+    position: relative;
+}
+
+.nomicards img {
+    width: 207px;
+}
+
+.nomiwhite {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    width: 90%;
+    border-radius: 7px;
+    padding: 50px;
+    padding-bottom: 0;
+}
+
+.nominatedsec {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.nominatedsec h1 {
+    font-size: 32px;
+    font-weight: 300;
+}
+
+.nominame {
+    border: 1px solid #7D7D7D;
+    position: absolute;
+    bottom: -17px;
+    left: 11%;
+    background-color: white;
+    color: #6F6F6F;
+    margin: 0;
+    font-size: 23px;
+    font-weight: 500;
+    padding: 2px 6px;
+    filter: drop-shadow(0px 10px 20px #000000);
+}
+
+.nomihorse {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+@media (max-width:790px) {
+    .nomiwhite {
+        width: 90%;
+        padding: 0;
+        padding-top: 50px;
+        margin-bottom: 20px;
+    }
+    .nominatedsec {
+        padding: 0;
+        gap: 15px;
+    }
+    .nominatedsec h1 {
+        font-size: 150%;
+        margin-top: 20px;
+    }
+    .nomihorse {
+        margin: 30px;
+    }
+}
