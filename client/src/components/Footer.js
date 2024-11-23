@@ -44,8 +44,8 @@ const Footer = () => {
             <Link href='/about' className='m-0 p-0 text-[#9B9B9C] hover:text-lightorange'>About Us</Link>
             <Link href='/teams' className='m-0 p-0 text-[#9B9B9C] hover:text-lightorange'>Our Team</Link>
             <Link href='/contactus' className='m-0 p-0 text-[#9B9B9C] hover:text-lightorange'>Contact Us</Link>
-            <Link href='/tnc' className='m-0 p-0 text-[#9B9B9C] hover:text-lightorange'>Terms & Conditions</Link>
-            <Link href='/privacypolicy' className='m-0 p-0 text-[#9B9B9C] hover:text-lightorange'>Privacy Policy</Link>
+            <Link href='/' className='m-0 p-0 text-[#9B9B9C] hover:text-lightorange'>Terms & Conditions</Link>
+            <Link href='/' className='m-0 p-0 text-[#9B9B9C] hover:text-lightorange'>Privacy Policy</Link>
           </div>
           <div className='flex flex-col gap-5 mb-8 md:mb-0'>
             <h1 className='font-bold text-xl text-white'>Contact Us</h1>
@@ -67,7 +67,7 @@ const Footer = () => {
 
 
       <div className='flex justify-center flex-col items-center py-5'>
-        <Link href="/"><img loading="lazy" className="xsm:w-36 xsm:h-10 md:w-44 md:h-12" src='/pharmalogo.png' alt="Logo" /></Link>
+        <Link href="/"><img loading="lazy" className="xsm:w-36 xsm:h-10 md:w-44 md:h-12" src='/pharma-logo.png' alt="Logo" /></Link>
         <p className='text-veryLightPink pt-3'>Your Trusted Partner in Pharmaceutical Supply</p>
         <div className='flex sm:flex-row xsm:flex-col justify-center sm:gap-5 xsm:-ml-4 xsm:gap-4'>
           <Link href='https://www.facebook.com/pharmasupply' className='m-0 p-0 text-[#9B9B9C] hover:text-lightorange flex items-center gap-1'> <img src='/iconfooter/icons8-facebook-48.png' width={30} />Facebook</Link>
@@ -76,7 +76,7 @@ const Footer = () => {
           <Link href='https://www.linkedin.com/company/pharmasupply' className='m-0 p-0 text-[#9B9B9C] hover:text-lightorange flex items-center gap-1'><img src='/iconfooter/icons8-linkedin-48.png' width={30} />Linkedin</Link>
         </div>
         <p className='text-white pt-2'>Copyright &copy; 2024 All rights reserved</p>
-        <a href='https://indibus.net/' target='_blank' className='text-white'>Powered by IndiBus</a>
+        {/* <a href='https://indibus.net/' target='_blank' className='text-white'>Powered by IndiBus</a> */}
       </div>
 
     </div>

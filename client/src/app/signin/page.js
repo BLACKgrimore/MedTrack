@@ -1,150 +1,145 @@
 "use client";
-import Axios from '@/utils/axios';
-import Link from 'next/link';
-import React, { useRef, useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import Cookies from "js-cookie";
-import { toast } from 'react-toastify';
 
-const SignIn = () => {
-  const router = useRouter();
-  const email = useRef(null);
-  const password = useRef(null);
-  const forgotEmail = useRef(null);
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+import React, { useState } from "react";
+import axios from "axios";
 
-  const [selectedOption, setSelectedOption] = useState('');
+const SignInPage = () => {
+  const [role, setRole] = useState("store"); // Default to Store Sign In
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSelectionChange = (e) => {
-    const selectedValue = e.target.value;
-    setSelectedOption(selectedValue);
-    if (selectedValue) {
-      router.push(selectedValue);  // Redirect to the selected href
-    }
+  // Toggle between roles
+  const handleToggle = (selectedRole) => {
+    setRole(selectedRole);
+    setFormData({
+      email: "",
+      password: "",
+    });
+    setErrors({});
   };
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  // Validation checks
+  const validate = () => {
+    const errors = {};
+    if (!formData.email) {
+      errors.email = "Email is required.";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errors.email = "Email is invalid.";
+    }
+    if (!formData.password) {
+      errors.password = "Password is required.";
+    }
+    return errors;
+  };
 
-  const handleSignin = async (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    setErrors({});
+    setIsSubmitting(true);
 
     try {
-      const response = await Axios.post("/user/login", {
-        email: email.current.value,
-        password: password.current.value
-      });
-
-      if (response.status === 200) {
-        const { accessToken, refreshToken, type, access } = response.data.data;
-        // console.log(response.data.data)
-
-        Cookies.set("accessToken", accessToken, { expires: 3, path: "/" });
-        Cookies.set("refreshToken", refreshToken, { expires: 3, path: "/" });
-        Cookies.set("type", type, { expires: 3, path: "/" }); 
-        Cookies.set("access", access, { expires: 3, path: "/" }); 
-        toast.success("Login Successfuly")
-
-        // console.log("the cookies are",{ accessToken, refreshToken, type })
-        // console.log(Cookies.get('type'))
-        window.location.href = '/';
-      }
+      const endpoint =
+        role === "store" ? "/api/stores/signin" : "/api/vendors/signin";
+      const response = await axios.post(endpoint, formData);
+      console.log(`${role.charAt(0).toUpperCase() + role.slice(1)} signed in:`, response.data);
+      alert("Sign in successful!");
     } catch (error) {
-      toast.error("Invalid email or password.");
+      console.error("Sign in error:", error.response?.data || error);
+      alert("Sign in failed. Please check your credentials.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
-
-  const handleForgotPassword = async () => {
-    if (forgotEmail.current.value) {
-      try {
-        const response = await Axios.post('/user/forget', {
-          email: forgotEmail.current.value,
-          type: "user"
-        });
-        if (response.status === 200) {
-          toast.success("Password reset email sent successfully! Check your email.");
-          setIsPopupOpen(false);
-        }
-      } catch (error) {
-        toast.error("Error sending password reset email.");
-      }
-    }
-  };
-
-  if (!isMounted) return null;
 
   return (
-    <div className='bg-[#E9D1EC]'>
-      {/* Background image */}
-      <div className='h-[18rem] sm:h-[25rem] xl:h-[33rem] xxl:h-[38rem] flex'>
-        <img loading="lazy" src='./login.png' className='w-full object-cover' alt="Login Background" />
+    <div className="max-w-md mx-auto p-8 shadow-md pt-32 bg-pink-100 rounded-md">
+      <div className="flex justify-center mb-6">
+        <button
+          className={`py-2 px-6 text-sm font-bold rounded-l-md ${
+            role === "store"
+              ? "bg-green-600 text-white"
+              : "bg-gray-200 text-gray-700"
+          }`}
+          onClick={() => handleToggle("store")}
+        >
+          Store Sign In
+        </button>
+        <button
+          className={`py-2 px-6 text-sm font-bold rounded-r-md ${
+            role === "vendor"
+              ? "bg-green-600 text-white"
+              : "bg-gray-200 text-gray-700"
+          }`}
+          onClick={() => handleToggle("vendor")}
+        >
+          Vendor Sign In
+        </button>
       </div>
 
-      {/* Sign-in Form */}
-      <div className='flex justify-center items-center pb-16'>
-        <form onSubmit={handleSignin} className='-mt-48 bg-white w-[90%] sm:w-[28rem] 
-        flex flex-col justify-center items-center rounded-2xl pb-10 shadow-lg border border-gray-300'>
-          <h1 className='font-serif font-bold text-2xl pt-12 pb-10'>Sign In as User</h1>
-          <div className='flex flex-col justify-center gap-8 w-full px-5'>
-            <div className='flex flex-col justify-center gap-3'>
-              <label htmlFor="email">Email*</label>
-              <input ref={email} id="email" required className='border border-gray-300 px-2 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500' placeholder='Email' />
-            </div>
-            <div className='flex flex-col justify-center gap-3'>
-              <label htmlFor="password">Password*</label>
-              <input ref={password} id="password" required className='border border-gray-300 px-2 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500' placeholder='Password' />
-            </div>
-            <Link href='#' onClick={() => setIsPopupOpen(true)} className='text-sm text-blue-600 hover:underline'>Forgot Password?</Link>
-            <div className='flex justify-center flex-col gap-6 items-center pt-5'>
-              <button className='bg-[#45A7DE] text-white rounded-full w-[90%] flex justify-center items-center sm:w-64 py-2 transition-transform hover:scale-105' type='submit'>Sign In User</button>
-            </div>
-          </div>
+      <h1 className="text-2xl font-bold text-center mb-4">
+        {role === "store" ? "Store Sign In" : "Vendor Sign In"}
+      </h1>
 
-          {/* Sign-in as other user types */}
-          <p className='flex justify-center my-10'>Or</p>
-          <div className='flex justify-center items-center flex-col gap-3'>
-            <select
-              value={selectedOption}
-              onChange={handleSelectionChange}
-              className="bg-[#D086AB] text-white flex justify-center rounded-full w-[90%] sm:w-64 py-2 cursor-pointer"
-            >
-              <option  className="text-center" value="" disabled>
-                Sign In as
-              </option>
-              {/* <option className="text-center" value="/signinvendor">Sign In as Vendor</option> */}
-              <option className="text-center" value="/signinngo">Sign In as NGO</option>
-              <option className="text-center" value="/signup">Register as User</option>
-              {/* <option className="text-center" value="/vendorregister">Register as Vendor</option> */}
-              <option className="text-center" value="/ngosignup">Register as NGO</option>
-            </select>
-            {/* <Link href="../signinvendor" className='bg-[#D086AB] text-white flex justify-center items-center rounded-full w-[90%] sm:w-64 py-2 transition-transform hover:scale-105'>Sign In as Vendor</Link>
-            <Link href="../signinngo" className='bg-[#D086AB] text-white flex justify-center items-center rounded-full w-[90%] sm:w-64 py-2 transition-transform hover:scale-105'>Sign In as NGO</Link>
-            <Link href="../signup" className='bg-[#D086AB] text-white flex justify-center items-center rounded-full w-[90%] sm:w-64 py-2 transition-transform hover:scale-105'>Register as User</Link>
-            <Link href="../vendorregister" className='bg-[#D086AB] text-white flex justify-center items-center rounded-full w-[90%] sm:w-64 py-2 transition-transform hover:scale-105'>Register as Vendor</Link>
-            <Link href="../ngosignup" className='bg-[#D086AB] text-white flex justify-center items-center rounded-full w-[90%] sm:w-64 py-2 transition-transform hover:scale-105'>Register as NGO</Link> */}
-            <p className='text-center'>Do not have an account? <Link href={"/signup"} className='font-bold text-[#FF5900E5]'>SIGN UP HERE</Link></p>
-          </div>
-        </form>
-      </div>
-
-      {/* Forgot Password Popup Modal */}
-      {isPopupOpen && (
-        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white p-8 rounded-lg w-[90%] sm:w-[28rem] flex flex-col">
-            <h2 className="text-2xl font-semibold mb-4">Forgot Password</h2>
-            <label className="mb-2">Enter your email to reset password:</label>
-            <input ref={forgotEmail} type="email" required className="border border-gray-400 p-2 mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email" />
-            <div className="flex justify-end gap-4">
-              <button onClick={() => setIsPopupOpen(false)} className="bg-gray-400 text-white py-1 px-4 rounded transition-transform hover:scale-105">Cancel</button>
-              <button onClick={handleForgotPassword} className="bg-blue-500 text-white py-1 px-4 rounded transition-transform hover:scale-105">Send Email</button>
-            </div>
-          </div>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Email */}
+        <div>
+          <label className="block font-medium">Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-lightblue"
+            placeholder="Enter your email"
+          />
+          {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
         </div>
-      )}
+
+        {/* Password */}
+        <div>
+          <label className="block font-medium">Password</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-lightblue"
+            placeholder="Enter your password"
+          />
+          {errors.password && (
+            <p className="text-red-500 text-sm">{errors.password}</p>
+          )}
+        </div>
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className={`w-full py-2 px-4 text-white font-bold rounded-md ${
+            isSubmitting
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-green-600 hover:bg-green-700 focus:ring focus:ring-green-400"
+          }`}
+        >
+          {isSubmitting ? "Signing in..." : "Sign In"}
+        </button>
+      </form>
     </div>
   );
 };
 
-export default SignIn;
+export default SignInPage;
