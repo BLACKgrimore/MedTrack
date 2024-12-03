@@ -1,15 +1,8 @@
-// components/EventPerformance.js
+// components/PharmaceuticalPerformance.js
 import Axios from '@/utils/axios';
-import { event } from 'jquery';
 import React, { useEffect, useState } from 'react';
 import { RiMenuUnfold4Fill } from "react-icons/ri";
 
-// const eventsData = [
-//     { name: 'Sanju & Dhruvi Wedding', revenue: 'Rs. 67,000', color: 'text-blue-500', borderColor: 'border-blue-500' },
-//     { name: 'Tanmay’s Birthday', revenue: 'Rs. 67,000', color: 'text-green-500', borderColor: 'border-green-500' },
-//     { name: 'Bhajan', revenue: 'Rs. 67,000', color: 'text-red-500', borderColor: 'border-red-500' },
-//     { name: 'Raj & Manu Wedding', revenue: 'Rs. 67,000', color: 'text-pink-500', borderColor: 'border-pink-500' },
-// ];
 const colors = [
     'border-red-500',     // Red
     'border-blue-500',    // Blue
@@ -22,6 +15,7 @@ const colors = [
     'border-indigo-500',  // Indigo
     'border-emerald-500'  // Emerald
 ];
+
 const texts = [
     'text-red-500',     // Red
     'text-blue-500',    // Blue
@@ -34,27 +28,30 @@ const texts = [
     'text-indigo-500',  // Indigo
     'text-emerald-500'  // Emerald
 ];
+
 const radnomIndexGenerator = () => {
     return Math.floor(Math.random() * 9);
 }
 
-const EventPerformance = () => {
-    const [amountPaid, setAmount] = useState(null);
+const PharmaceuticalPerformance = () => {
+    const [medicinesSold, setMedicinesSold] = useState(null);
+
     useEffect(() => {
-        const getEventPerformance = async () => {
-            //TODO: There is no data of the user so populate the user in the backend controller and update it accordingly.
-            const resp = await Axios.get('/admin/eventperformance');
-            console.log(resp.data)
-            setAmount(resp.data.data);
+        const getPharmaceuticalPerformance = async () => {
+            // Fetch pharmaceutical performance data (e.g., sales and inventory)
+            const resp = await Axios.get('/admin/pharmaceuticalperformance');
+            console.log(resp.data);
+            setMedicinesSold(resp.data.data);
         }
-        getEventPerformance();
-    }, [])
+        getPharmaceuticalPerformance();
+    }, []);
 
     return (
         <div className="p-4 bg-white rounded-2xl shadow-md shadow-orange-600 md:w-[50vw] xsm:w-full">
-            <h2 className="text-4xl font-bold mb-4">Event Performance</h2>
+            <h2 className="text-4xl font-bold mb-4">Pharmaceutical Performance</h2>
             <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-semibold">Top Events</h3>
+                <h3 className="text-xl font-semibold">Top Performing Medicines</h3>
+                {/* Optional: Add sorting/filtering options */}
                 {/* <div className="flex items-center xsm:flex-row justify-center gap-4">
                     <select id="sortBy" className="border xsm:text-sm py-2 px-3 outline-[1px] border-none focus:border-none focus-visible:border-none bg-[#ffe7da] rounded-2xl border-gray-300">
                         <option value="date">Month</option>
@@ -65,24 +62,25 @@ const EventPerformance = () => {
                     </div>
                 </div> */}
             </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {amountPaid ? amountPaid.map((event, index) => (
+                {medicinesSold ? medicinesSold.map((medicine, index) => (
                     <div key={index} className={`p-2 border-t-4 ${colors[radnomIndexGenerator()]} flex flex-col justify-between`}>
                         <div>
-                            <h4 className={`text-lg font-semibold text-orange-400 ${texts[radnomIndexGenerator()]}`}>Rs. {event.amount_paid}</h4>
-                            <p>{event ? event.username : "N/A"}</p>
+                            <h4 className={`text-lg font-semibold text-orange-400 ${texts[radnomIndexGenerator()]}`}>Rs. {medicine.totalSales}</h4>
+                            <p>{medicine.medicineName}</p>
                         </div>
                     </div>
                 )) : ""}
             </div>
-            {amountPaid &&
+
+            {medicinesSold &&
                 <div className="flex flex-col items-center space-y-4">
-                    {/* <img src={`${amountPaid ? amountPaid[0].avatar : ""}`} alt="N/A" className="w-16 h-16 rounded-full" /> */}
+                    {/* Optional: Display more details about the top-selling medicine */}
                     <div>
-                        <p>"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout"</p>
-                        <p className="font-bold">{amountPaid ? amountPaid[0].fullname : ""}</p>
-                        <p className="font-bold">{amountPaid ? amountPaid[0].email : ""}</p>
-                        <p className="font-bold">{amountPaid ? amountPaid[0].phone_no : ""}</p>
+                        <p>"This product has been one of the best performers in terms of sales, and it continues to drive significant revenue for the company."</p>
+                        <p className="font-bold">{medicinesSold ? medicinesSold[0].supplierName : ""}</p>
+                        <p className="font-bold">{medicinesSold ? medicinesSold[0].medicineCategory : ""}</p>
                     </div>
                 </div>
             }
@@ -90,4 +88,4 @@ const EventPerformance = () => {
     );
 };
 
-export default EventPerformance;
+export default PharmaceuticalPerformance;
