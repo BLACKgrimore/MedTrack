@@ -12,7 +12,7 @@ const page = () => {
     <div>
         <HeroSection/>
         <Location/>
-        {/* <EventManagement/> */}
+        <EventManagement/>
         {/* <BestService/> */}
         <Review/>
         <Service/>

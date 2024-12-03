@@ -43,7 +43,7 @@ const HeroSection = () => {
                         id='carousel-image-1'
                         style={{ opacity: (carousel === 0 ? 1 : 0), zIndex: (carousel === 0 ? 1 : 0) }}
                         className='absolute h-full w-full object-cover transition-opacity duration-1000'
-                        src={"/pharmacyHero1.png"} // Replace with pharmacy-related image
+                        src={"/medtrack/pic1.jpeg"} // Replace with pharmacy-related image
                         height={1000}
                         width={1000}
                         alt="Hero Section 1"
@@ -53,7 +53,7 @@ const HeroSection = () => {
                         id='carousel-image-2'
                         style={{ opacity: (carousel === 1 ? 1 : 0), zIndex: (carousel === 1 ? 1 : 0) }}
                         className='absolute h-full w-full object-cover transition-opacity duration-1000'
-                        src={"/pharmacyHero2.png"} // Replace with pharmacy-related image
+                        src={"/medtrack/pic2.jpeg"} // Replace with pharmacy-related image
                         height={1000}
                         width={1000}
                         alt="Hero Section 2"
@@ -63,7 +63,7 @@ const HeroSection = () => {
                         id='carousel-image-3'
                         style={{ opacity: (carousel === 2 ? 1 : 0), zIndex: (carousel === 2 ? 1 : 0) }}
                         className='absolute h-full w-full object-cover transition-opacity duration-1000'
-                        src={"/pharmacyHero3.png"} // Replace with pharmacy-related image
+                        src={'/medtrack/pic3.jpeg'} // Replace with pharmacy-related image
                         height={1000}
                         width={1000}
                         alt="Hero Section 3"
