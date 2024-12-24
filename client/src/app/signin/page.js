@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import axios from "axios";
+import { Router } from "next/navigation";
+import Link from "next/link";
 
 const SignInPage = () => {
   const [role, setRole] = useState("store"); // Default to Store Sign In
@@ -15,6 +17,7 @@ const SignInPage = () => {
   // Toggle between roles
   const handleToggle = (selectedRole) => {
     setRole(selectedRole);
+    console.log(role)
     setFormData({
       email: "",
       password: "",
@@ -43,6 +46,7 @@ const SignInPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Router.push("/analytics")
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -126,8 +130,8 @@ const SignInPage = () => {
         </div>
 
         {/* Submit Button */}
-        <button
-          type="submit"
+        {role == "store" && <Link
+          href={"/clientdashboard"}
           disabled={isSubmitting}
           className={`w-full py-2 px-4 text-white font-bold rounded-md ${
             isSubmitting
@@ -136,7 +140,18 @@ const SignInPage = () => {
           }`}
         >
           {isSubmitting ? "Signing in..." : "Sign In"}
-        </button>
+        </Link>}
+        {role == "vendor" && <Link
+          href={"/vendordashboard"}
+          disabled={isSubmitting}
+          className={`w-full py-2 px-4 text-white font-bold rounded-md ${
+            isSubmitting
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-green-600 hover:bg-green-700 focus:ring focus:ring-green-400"
+          }`}
+        >
+          {isSubmitting ? "Signing in..." : "Sign In"}
+        </Link>}
       </form>
     </div>
   );
