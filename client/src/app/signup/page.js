@@ -11,7 +11,7 @@ const StoreRegistration = () => {
     phone: "",
     registrationNumber: "",
     password: "",
-    confirmPassword: "",
+    file: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -71,7 +71,7 @@ const StoreRegistration = () => {
         phone: "",
         registrationNumber: "",
         password: "",
-        confirmPassword: "",
+        file: "",
       });
     } catch (error) {
       console.error("Error during registration:", error.response?.data || error);
@@ -179,17 +179,17 @@ const StoreRegistration = () => {
 
         {/* Confirm Password */}
         <div>
-          <label className="block font-medium">Confirm Password</label>
+          <label className="block font-medium">Licence</label>
           <input
-            type="password"
-            name="confirmPassword"
-            value={formData.confirmPassword}
+            type="file"
+            name="file"
+            value={formData.file}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-lightblue"
-            placeholder="Confirm your password"
+            placeholder="select file"
           />
-          {errors.confirmPassword && (
-            <p className="text-red-500 text-sm">{errors.confirmPassword}</p>
+          {errors.file && (
+            <p className="text-red-500 text-sm">{errors.file}</p>
           )}
         </div>
 

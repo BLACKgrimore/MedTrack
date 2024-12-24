@@ -53,8 +53,8 @@ const EventManagement = () => {
         <planevent3 className="md:min-h-[32rem] relative rounded-lg bg-no-repeat object-center object-fit bg-cover
                          bg-[url('/medtrack/pic9.jpeg')] bg-center sm:min-h-[22rem] xsm:min-h-[22rem]">
           <div className="md:pl-16 sm:pl-10 xsm:pl-5 md:py-20 sm:py-14 xsm:py-10 space-y-2 absolute bottom-0 left-0">
-            <p className="md:text-4xl text-left text-white font-semibold sm:text-2xl xsm:text-xl">Efficient Timesheet & Holiday Management for Employees</p>
-            <p className="max-w-sm pb-9 text-white text-[.8rem]">Our platform ensures smooth management of bench employees by automating timesheet submissions and holiday requests, enabling accurate tracking of employee availability and billing.</p>
+            <p className="md:text-4xl text-left text-white font-semibold sm:text-2xl xsm:text-xl">Automated Order Fulfillment & Delivery Tracking</p>
+            <p className="max-w-sm pb-9 text-white text-[.8rem]">With automated order processing and real-time tracking, our system ensures that clients can manage their orders efficiently. Whether managing bulk deliveries or urgent stock requests, our system streamlines the entire process.</p>
             <Link href="/timesheets" className="mt-11 text-[1rem] p-3 px-7 pt-3 text-white bg-veryLightOrange rounded-xl ">Manage Timesheets</Link>
           </div>
         </planevent3>
